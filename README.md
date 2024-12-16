@@ -2,15 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
-## **A brief explanation of design decisions and application structure : **
-- Separated http service business logic using interface and use dependency injection to inject in componenet. (Single responsibility)
-- Reuse the http service at various places
+## Setting Up a Project
+  - Install the Angular CLI globally:
+     npm install -g @angular/cli
+  - run below command to install packages locally
+     npm install
   
 ## Steps to run Development server
  - Change below URL for api in DataService
     private apiUrl = 'https://localhost:7152/api/v1/contact'; // Replace with your API URL
  - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## **A brief explanation of design decisions and application structure : **
+- Separated http service business logic using interface and use dependency injection to inject in componenet. (Single responsibility)
+- Reuse the http service at various places
+  
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
