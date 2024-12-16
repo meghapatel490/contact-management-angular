@@ -2,9 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## **A brief explanation of design decisions and application structure : **
+- Separated http service business logic using interface and use dependency injection to inject in componenet. (Single responsibility)
+- Reuse the http service at various places
+  
+## Steps to run Development server
+ - Change below URL for api in DataService
+    private apiUrl = 'https://localhost:7152/api/v1/contact'; // Replace with your API URL
+ - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -25,3 +30,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
