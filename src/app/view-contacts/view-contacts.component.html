@@ -1,0 +1,31 @@
+<div class="d-inline-flex p-2">
+    <button type="submit" class="btn btn-success" id="btnNewContact" (click)="createContact($event)" style="background-color: green;">New</button>
+</div>
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of contacts">
+        <td> {{row.id}}</td>
+        <td> {{row.firstName}}</td>
+        <td> {{row.lastName}}</td>
+        <td> {{row.email}}</td>
+        <td> 
+            <button type="submit" id="btnEdit_{{row.id}}" (click)="editContact(row)" class="btn btn-primary">Edit</button>
+        </td>
+        <td> 
+            <button type="submit" id="btnDelete_{{row.id}}" (click)="deleteContact(row)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
+</div>
