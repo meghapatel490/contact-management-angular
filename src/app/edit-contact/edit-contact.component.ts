@@ -37,6 +37,10 @@ export class EditContactComponent {
         email: new FormControl(this.existingContact.email, [Validators.email])
       });
 
+    },
+    (error) => {
+      console.log(error); 
+      alert(error); 
     });
   }
 
@@ -53,7 +57,10 @@ export class EditContactComponent {
           console.log(data);
           this._router.navigate(['/view-contact']);
         },
-        (error) => {console.log(error); alert(error.statusText); }
+        (error) => {
+          console.log(error); 
+          alert(error); 
+        }
     );
   }
 
