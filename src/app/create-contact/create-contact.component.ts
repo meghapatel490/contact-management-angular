@@ -38,7 +38,10 @@ export class CreateContactComponent {
         console.log(data);
         this._router.navigate(['view-contact']);
       },
-      (error) => {console.log(error); alert(error.statusText); }
+      (error) => {
+        console.log(error); 
+        alert(error); 
+      } 
     );
   }
 
