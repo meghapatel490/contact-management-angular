@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgClass, Location } from '@angular/common';
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { DataService } from '../services/data.service';
-import { Router, ActivatedRoute }  from '@angular/router'; 
+import { Router }  from '@angular/router'; 
 import { Contact } from '../model/contact';
 
 @Component({
@@ -18,8 +18,9 @@ export class EditContactComponent {
   submitted = false;
   existingContactId : number = 0;
   existingContact : Contact | undefined;
-  
-  constructor(private dataService: DataService, private fb: FormBuilder, private _router: Router, private location: Location,private route: ActivatedRoute){
+  @Input('id') contactId ='';
+
+  constructor(private dataService: DataService, private fb: FormBuilder, private _router: Router, private location: Location){
     this.editContactForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
@@ -28,7 +29,9 @@ export class EditContactComponent {
   }
 
   ngOnInit(): void {
-    this.existingContactId = Number(this.route.snapshot.paramMap.get('id'));
+    if (this.contactId ) {
+      this.existingContactId = Number(Number(this.contactId));
+    }
     this.dataService.getDataById(this.existingContactId).subscribe(data => {
       this.existingContact = <Contact>data;
       this.editContactForm = new FormGroup({
@@ -50,9 +53,8 @@ export class EditContactComponent {
     if (this.editContactForm.invalid) {
       return;
     }
-    const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.dataService.putData(this.editContactForm.value, id).subscribe(
+    this.dataService.putData(this.editContactForm.value, this.existingContactId).subscribe(
         (data) => {
           console.log(data);
           this._router.navigate(['/view-contact']);

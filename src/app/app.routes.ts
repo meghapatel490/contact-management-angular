@@ -7,11 +7,11 @@ import { EditContactComponent } from '../app/edit-contact/edit-contact.component
 export const routes: Routes = [ 
     { path: 'view-contact', component: ViewContactsComponent },
     { path: 'contact', component: CreateContactComponent },
-    { path: 'edit-contact/:id', component: EditContactComponent },
+    { path: 'edit-contact/:id', component: EditContactComponent }
 ]; 
 
  @NgModule({ 
-    imports: [RouterModule.forRoot(routes)], 
+    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })], 
     exports: [RouterModule] }) 
 
 export class AppRoutingModule { }
